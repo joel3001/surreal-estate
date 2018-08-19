@@ -2,3 +2,23 @@
   background-color: white;
   border-bottom: 5px solid grey;
 }
+
+.nav-bar > .logo {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 50px;
+  color: grey;
+}
+
+.nav-bar > .nav {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.nav-bar > .item {
+  margin: 0;
+  padding: 10px;
+  display: inline-block;
+  color: green;
+}
