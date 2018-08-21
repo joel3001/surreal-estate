@@ -7,7 +7,7 @@ const NavBar = ({}) => (
     <div className="logo">
       <i className="fas fa-globe-americas" />
     </div>
-    <h1 className="header">A Reet Nice Place!</h1>
+    <span className="header">A Reet Nice Place!</span>
     <div>
       <ul className="nav">
         <Link className="item" to="/"><i className="fas fa-home" />View Properties</Link>
