@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Alert from './Alert';
+import '../styles/alert.scss';
 import '../styles/add-property.scss';
 import axios from 'axios';
 
@@ -10,32 +12,44 @@ class AddProperty extends Component {
         title: '',
         type: 'Flat',
         city: 'Manchester',
-        bedrooms: '',
-        bathrooms: '',
+        bedrooms: '1',
+        bathrooms: '1',
         price: '',
         email: '',
       },
+      alertMessage: '',
+      isSuccess: false,
+      isError: false,
     };
   }
 
   handleAddProperty = event => {
     event.preventDefault();
+    this.setState({
+      alertMessage: '',
+      isSuccess: false,
+      isError: false,
+    });
 
     console.log(this.state.fields);
     axios.post('http://localhost:3000/api/v1/PropertyListing', {
-      title: this.state.title,
-      type: this.state.type,
-      city: this.state.city,
-      bedrooms: this.state.bedrooms,
-      bathrooms: this.state.bathrooms,
-      price: this.state.price,
-      email: this.state.email,
+      title: this.state.fields.title,
+      type: this.state.fields.type,
+      city: this.state.fields.city,
+      bedrooms: this.state.fields.bedrooms,
+      bathrooms: this.state.fields.bathrooms,
+      price: this.state.fields.price,
+      email: this.state.fields.email,
     })
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
+      .then(() => this.setState({
+        isSuccess: true,
+        alertMessage: 'Property added.',
+      }))
+      .catch((err) => {
+        this.setState({
+          alertMessage: 'Server error. Please try again later.',
+          isError: true,
+        });
       });
   };
 
@@ -54,6 +68,8 @@ class AddProperty extends Component {
       <div className="add-property">
         Please fill all details below before continuing<br />
         <form onSubmit={this.handleAddProperty}>
+          {this.state.isSuccess && <Alert message={this.state.alertMessage} success />}
+          {this.state.isError && <Alert message={this.state.alertMessage} />}
           <input name="title" value={this.state.fields.title} onChange={this.handleFieldChange} placeholder="Property Title" />
           <div>City:
             <select name="city" value={this.state.fields.city} onChange={this.handleFieldChange}>
@@ -86,5 +102,6 @@ class AddProperty extends Component {
     );
   }
 }
+
 
 export default AddProperty;

@@ -6,7 +6,7 @@ module.exports = {
   },
   target: 'web',
   mode: 'development',
-  entry: path.join(__dirname, 'src/index.jsx'),
+  entry: path.join(__dirname, 'src/components/index.jsx'),
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'app.js',
