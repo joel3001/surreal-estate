@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const PropertyCard = (props) => (
   <div className="property-card">
