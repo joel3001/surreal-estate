@@ -70,7 +70,7 @@ class AddProperty extends Component {
         <form onSubmit={this.handleAddProperty}>
           {this.state.isSuccess && <Alert message={this.state.alertMessage} success />}
           {this.state.isError && <Alert message={this.state.alertMessage} />}
-          <input name="title" value={this.state.fields.title} onChange={this.handleFieldChange} placeholder="Enter property description" />
+          <input name="title" value={this.state.fields.title} onChange={this.handleFieldChange} placeholder="Enter Property Description..." />
           <div>City:
             <select name="city" value={this.state.fields.city} onChange={this.handleFieldChange}>
               <option value="Manchester">Manchester</option>
